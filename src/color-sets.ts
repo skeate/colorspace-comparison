@@ -1,51 +1,60 @@
-import { HuePicker } from "react-color";
+import { HuePicker } from 'react-color'
 
 type Nybble =
-  | "0"
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "A"
-  | "B"
-  | "C"
-  | "D"
-  | "E"
-  | "F";
+  | '0'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | 'A'
+  | 'B'
+  | 'C'
+  | 'D'
+  | 'E'
+  | 'F'
 
 type Byte = `${Nybble}${Nybble}`
 
 type RGB = [Byte, Byte, Byte]
 
 export type RGBColor = {
-  name: string;
-  rgb: RGB;
-};
+  name: string
+  rgb: RGB
+}
 
 type Hue = number
 type Saturation = number
 type Lightness = number
 
 export type HSLColor = {
-  name: string;
+  name: string
   hsl: [Hue, Saturation, Lightness]
 }
 
-type Value = number;
+type Value = number
 
 export type HSVColor = {
-  name: string;
+  name: string
   hsv: [Hue, Saturation, Value]
+}
+
+export type LabColor = {
+  name: string
+  lab: [number, number, number]
 }
 
 export const rgbToHex = (rgb: RGB) => `#${rgb.join('')}`
 
-export const rgbToNumbers = (rgb: RGB) => rgb.map(byte => parseInt(byte, 16))
+export const rgbToNumbers = (rgb: RGB) => ({
+  red: parseInt(rgb[0], 16),
+  green: parseInt(rgb[1], 16),
+  blue: parseInt(rgb[2], 16),
+})
 
 export const basicColors: ReadonlyArray<RGBColor> = [
   { name: 'White', rgb: ['FF', 'FF', 'FF'] },
@@ -64,7 +73,7 @@ export const basicColors: ReadonlyArray<RGBColor> = [
   { name: 'Navy', rgb: ['00', '00', '80'] },
   { name: 'Fuchsia', rgb: ['FF', '00', 'FF'] },
   { name: 'Purple', rgb: ['80', '00', '80'] },
-];
+]
 
 export const extendedColors: ReadonlyArray<RGBColor> = [
   { name: 'MediumVioletRed', rgb: ['C7', '15', '85'] },
